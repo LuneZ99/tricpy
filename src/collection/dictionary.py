@@ -4,7 +4,9 @@ from typing import Any
 
 
 class DotDict(dict):
-    """Enabling dot.notation access to dictionary attributes and dynamic code assist in jupyter"""
+    """Enabling dot.notation access to dictionary attributes and dynamic code assist in jupyter
+    source: https://github.com/autogluon/autogluon/blob/master/eda/src/autogluon/eda/state.py
+    """
 
     _getattr__ = dict.get
     __delattr__ = dict.__delitem__
