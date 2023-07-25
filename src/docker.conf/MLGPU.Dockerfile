@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
 
-COPY sources.list /tmp/sources.list
+COPY CorgiLab/sources.list /tmp/sources.list
 RUN cat /tmp/sources.list > /etc/apt/sources.list
 RUN rm /tmp/sources.list
 
@@ -13,7 +13,7 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.1.0-1-Linux-x86_
 RUN bash Miniconda3-py39_23.1.0-1-Linux-x86_64.sh -b
 RUN rm Miniconda3-py39_23.1.0-1-Linux-x86_64.sh
 ENV PATH /root/miniconda3/bin:$PATH
-COPY .condarc /tmp/.condarc
+COPY CorgiLab/.condarc /tmp/.condarc
 RUN cat /tmp/.condarc > /root/.condarc
 RUN rm /tmp/.condarc
 RUN conda clean -i
@@ -91,7 +91,7 @@ RUN jupyter notebook --generate-config && \
 # add weak ssh for ide
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
-COPY sshd_config /etc/ssh/sshd_config
+COPY CorgiLab/sshd_config /etc/ssh/sshd_config
 RUN echo 'root:root' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#Port 22/Port 52222/' /etc/ssh/sshd_config

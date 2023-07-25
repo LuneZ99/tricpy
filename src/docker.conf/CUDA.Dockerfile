@@ -1,6 +1,6 @@
 FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
-COPY sources.list /tmp/sources.list
+COPY CorgiLab/sources.list /tmp/sources.list
 RUN cat /tmp/sources.list > /etc/apt/sources.list && rm /tmp/sources.list
 
 RUN apt-get update && apt-get install -y wget openssh-server vim pigz

@@ -1,8 +1,8 @@
 FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
-COPY .condarc /tmp/.condarc
+COPY CorgiLab/.condarc /tmp/.condarc
 COPY proxychains.conf /etc/proxychains.conf
-COPY sources.list /tmp/sources.list
+COPY CorgiLab/sources.list /tmp/sources.list
 RUN cat /tmp/sources.list > /etc/apt/sources.list && rm /tmp/sources.list
 
 RUN apt-get update && apt-get install -y wget openssh-server vim pigz sudo git python3 python3-venv proxychains4 libgl1 libglib2.0-0
